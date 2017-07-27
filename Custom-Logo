@@ -1,0 +1,19 @@
+function my_custom_logo(){
+	$anchor = get_bloginfo( 'name' ) . ' - ' . get_bloginfo( 'description' );
+	$html = array();
+  $logo_id = get_theme_mod( 'custom_logo' ); // Get the ID
+  $logo = get_custom_img( $logo_id ); 
+
+  $html['tagged'] = sprintf('<a href="%1$s" class="custom-logo-link" rel="home" title="%6$s"><img src="%2$s" alt="%3$s" width="%4$s" height="%5$s" /></a>', 
+    esc_url( home_url( '/') ), 
+    esc_url( $logo['src'] ), 
+    esc_attr( get_bloginfo('name') . ' - ' . get_bloginfo( 'description' ) ),
+    esc_attr( $logo['width'] ), 
+    esc_attr( $logo['height'] ), 
+    esc_attr( get_bloginfo('name') . ' - ' . get_bloginfo( 'description' ) )
+  );
+
+  $html['link'] = $logo['src'];
+
+  return $html;
+}
